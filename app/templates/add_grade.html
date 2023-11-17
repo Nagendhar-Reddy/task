@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Grade</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #007bff; /* Label color matches the primary button */
+        }
+        .mb-3 {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            border-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker shade on hover */
+            border-color: #5a6268;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var gradeName = document.forms["addGradeForm"]["id_name"].value;
+
+            if (gradeName === "") {
+                alert("Grade name must be filled out");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Grade</h1>
+        <form method="post" action="{% url 'add_grade' %}" class="mt-4" name="addGradeForm" onsubmit="return validateForm()">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="{{ form.name.id_for_label }}" class="form-label">Grade Name:</label>
+                {{ form.name }}
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Save Grade</button>
+        </form>
+        <a class="btn btn-secondary mt-3" href="{% url 'grade_list' %}">Back to Grade List</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-title {
+            color: #007bff;
+        }
+
+        .card-text {
+            color: #495057;
+        }
+
+        .btn-primary,
+        .btn-danger {
+            border-radius: 12px;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+            border-radius: 12px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <h2>Inbox</h2>
+        <a href="{% url 'create_message' %}" ><button class="btn btn-success mb-3">Compose Message</button></a>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <h3>Received Messages</h3>
+                {% for message in received_messages %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ message.subject }}</h5>
+                        <p class="card-text">{{ message.body }}</p>
+                        <a href="{% url 'message_detail' message.id %}" class="btn btn-primary mr-2">View Details</a>
+                        <a href="{% url 'delete_message' message.id %}" class="btn btn-danger">Delete Message</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-6">
+                <h3>Read Messages</h3>
+                {% for message in read_messages %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ message.subject }}</h5>
+                        <p class="card-text">{{ message.body }}</p>
+                        <a href="{% url 'message_detail' message.id %}" ><button class="btn btn-primary mr-2">View Details</button></a>
+                        <a href="{% url 'delete_message' message.id %}" ><button class="btn btn-danger">Delete Message</button></a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

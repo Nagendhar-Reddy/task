@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Class</h1>
+        <p>Are you sure you want to delete "{{ class_instance.name }}"?</p>
+        <form method="post" action="{% url 'delete_class' class_instance.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            <a class="btn btn-secondary" href="{% url 'class_list' %}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

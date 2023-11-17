@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Class</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        .mb-3 {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var className = document.forms["addClassForm"]["id_name"].value;
+
+            if (className === "") {
+                alert("Class name must be filled out");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Class</h1>
+        <form method="post" action="{% url 'add_class' %}" class="mt-4" name="addClassForm" onsubmit="return validateForm()">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="{{ form.name.id_for_label }}" class="form-label">Class Name:</label>
+                {{ form.name }}
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Save Class</button>
+        </form>
+        <a class="btn btn-secondary mt-3" href="{% url 'class_list' %}">Back to Class List</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporting</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #chart-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #chart {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Customize the bar chart */
+        rect {
+            fill: #007bff; /* Bar color */
+            transition: fill 0.3s ease;
+        }
+
+        rect:hover {
+            fill: #0056b3; /* Bar color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="chart-container">
+            <h2>Reporting</h2>
+            <!-- Display the generated bar chart -->
+            <img id="chart" class="img-fluid" src="data:image/png;base64,{{ bar_chart }}" alt="Bar Chart">
+        </div>
+    </div>
+</body>
+
+</html>

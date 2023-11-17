@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #007bff; /* Primary color */
+        }
+
+        .chat-container {
+            max-height: 400px; /* Limiting the height for overflow */
+            overflow-y: auto; /* Adding a scrollbar for overflow */
+        }
+
+        .card {
+            background-color: #fff; /* White card background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body {
+            padding: 15px;
+            position: relative; /* Position relative for absolute positioning of delete button */
+        }
+
+        .delete-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #dc3545; /* Red color for delete button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007bff; /* Primary color for the button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Chat</h2>
+        <div class="chat-container">
+            {% for message in messages %}
+            <div class="card mb-2" id="message-{{ message.id }}">
+                <div class="card-body">
+                    <form method="post" action="{% url 'delete_message' message.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
+                    <p>{{ message.user.username }} - {{ message.timestamp }}</p>
+                    <p>{{ message.content }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <form method="post" action="{% url 'create_chat' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary mt-2">Send Message</button>
+        </form>
+    </div>
+</body>
+
+</html>

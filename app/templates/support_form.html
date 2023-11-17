@@ -1,0 +1,95 @@
+<!-- support_form.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Form</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+            color: #343a40; /* Text color */
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: #fff; /* White background for the form */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #007bff; /* Primary color */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #007bff; /* Label color */
+        }
+
+        /* Styling for the text box */
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            box-sizing: border-box;
+            border: 2px solid #007bff; /* Border color */
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            color: #495057;
+            transition: border-color 0.3s ease; /* Smooth transition on focus */
+        }
+
+        input[type="text"]:focus {
+            border-color: #0056b3; /* Darker border color on focus */
+        }
+
+        /* Styling for the submit button */
+        .btn-primary {
+            background-color: #007bff; /* Primary color for the button */
+            border: none;
+            width: 100%; /* Make the button full width */
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Support Form</h2>
+        <form method="post" action="{% url 'thank_you' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_question">Enter your question:</label>
+                {{ form.question }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Question</button>
+        </form>
+    </div>
+</body>
+
+</html>

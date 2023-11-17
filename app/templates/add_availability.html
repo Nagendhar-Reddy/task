@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Availability</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .mb-3 {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            width: 100%;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var date = document.forms["addAvailabilityForm"]["id_date"].value;
+            var status = document.forms["addAvailabilityForm"]["id_status"].value;
+
+            if (date === "" || status === "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Availability</h1>
+        <form method="post" action="{% url 'add_availability' %}" class="mt-4" name="addAvailabilityForm" onsubmit="return validateForm()">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="{{ form.date.id_for_label }}" class="form-label">Date:</label>
+                {{ form.date }}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.status.id_for_label }}" class="form-label">Status:</label>
+                {{ form.status }}
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Save Availability</button>
+            <a class="btn btn-secondary mt-3" href="{% url 'availability_list' %}">Back to Availability List</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+        }
+
+        .container {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #dc3545; /* Red color for error messages */
+            font-size: 4em;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Primary color for the button */
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            text-decoration: none; /* Remove default link styling */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Error 404</h1>
+        <p>Oops! The page you are looking for might be unavailable.</p>
+        <a href="{% url 'home' %}" class="btn btn-primary">Go to Home</a>
+    </div>
+</body>
+
+</html>

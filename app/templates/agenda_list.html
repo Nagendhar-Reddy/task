@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #e1bee7; /* Light purple background color */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #4a148c; /* Dark purple text color */
+        }
+
+        .btn-create {
+            background-color: #7e57c2; /* Purple button color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-delete {
+            background-color: #d81b60; /* Pink button color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .list-group-item {
+            margin-top: 10px;
+            background-color: #fff; /* White card background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px; /* Increased padding */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Agenda List</h2>
+        <a href="{% url 'create_agenda' %}" class="btn btn-create mb-3">Create Agenda</a>
+        <ul class="list-group">
+            {% for agenda in agendas %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ agenda.title }}
+                <a href="{% url 'delete_agenda' agenda.id %}" class="btn btn-delete btn-sm">Delete</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>

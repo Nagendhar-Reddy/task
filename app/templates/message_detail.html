@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .card-title {
+            color: #007bff;
+        }
+
+        .card-text {
+            color: #495057;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="mt-5">Message Detail</h2>
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ message.subject }}</h5>
+                <p class="card-text">{{ message.body }}</p>
+                <p class="card-text"><small class="text-muted">Sent at: {{ message.sent_at }}</small></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
